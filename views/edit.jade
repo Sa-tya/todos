@@ -1,0 +1,26 @@
+doctype html 
+html 
+    head 
+        title Edit
+    body
+        h1 Edit page of my Todos app
+        div
+           a(href='./logout') Logout
+        div
+         form(action='/todos',method='post')
+          fieldset(data-role='controlgroup')
+            div(data-role='fieldcontain')
+            fieldset(data-role='controlgroup')
+                label(for='task') Task :
+                input(id='task',type='text',value=#{task},placeholder='task',name='task', required)
+            div(data-role='fieldcontain')
+            fieldset(data-role='controlgroup')
+                label(for='disc') Discription :
+                input(id='disc',type='text',value=#{discription},placeholder='discription',name='disc', required)
+            div(data-role='fieldcontain')
+            fieldset(data-role='controlgroup')
+                label(for='due') Due-Date :
+                input(id='due',type='date',value=#{dueDate},placeholder='due-date',name='due', required)
+            div(data-role='fieldcontain')
+            input(type='submit',value='Add',data-transition='fade', data-theme='c')
+        block content
