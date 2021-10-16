@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
         if (err) res.status(404).send(err);
         // console.log(doc[0].todos);
         res.status(200).json(doc[0].todos);
-    })
+    });
     // res.send('todos get...')
 });
 
@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
             res.status(200).send('Enter valid input');
     }
     catch (err) {
-        console.log(err)
+        res.send(err);
     }
 
 });
@@ -56,8 +56,9 @@ router.delete('/:id', (req, res) => {
         { $pull: { todos: id } },
         { new: true },
         (err, doc) => {
-            if (err) console.log(err);
-            console.log(doc)
+            if (err) res.send(err);
+            // res.status(200).send(doc)
+
         });
     // User.updateOne({ _id: req.query.userId }, { $pop: { todos: { _id: id } } })
     Todo.findOneAndDelete({ _id: id },
@@ -77,7 +78,7 @@ router.put('/:id', (req, res) => {
                 { $set: { task: task, discription: discription, udate: Date.now() } },
                 { new: true }, (err, doc) => {
                     if (err) res.status(404).send(err);
-                    console.log(doc);
+                    // res.status(200).send(doc);
                     res.status(200).send('Task updated..');
                 });
             // todo.task = task;
@@ -90,7 +91,7 @@ router.put('/:id', (req, res) => {
             res.status(200).send('Enter valid input');
     }
     catch (err) {
-        console.log(err)
+        res.send(err);
     }
 });
 

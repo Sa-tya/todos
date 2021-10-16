@@ -13,12 +13,12 @@ var router = express.Router();
 
 
 router.get('/', (req, res) => {
-  res.status(200).render('home')
+  res.status(200).send('homepage')
   // res.redirect('/welcome');
 });
 
 router.get('/signup', (req, res) => {
-  res.render('signup')
+  res.status(200).send('Signup page');//render('signup')
 });
 
 router.post("/signup", async (req, res) => {
@@ -71,7 +71,7 @@ router.post("/signup", async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  res.render('login')
+  res.status(200).send('Login Page'); //.render('login')
 });
 
 router.post("/login", async (req, res) => {
